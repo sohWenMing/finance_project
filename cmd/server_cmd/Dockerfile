@@ -20,5 +20,10 @@ FROM debian:stable-slim
 WORKDIR /app
 
 COPY --from=golang-builder /app/server_cmd .
+#remember - when copying from another image, will need to refer to its alias, and the concept of workdir only 
+#applies to the current image that is currently being worked on
+
 EXPOSE 8080
+#expose port 8080   
 CMD ["./server_cmd"]
+#run the final command, running the binary

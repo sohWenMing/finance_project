@@ -14,6 +14,7 @@ func InitServer() *http.Server {
 		port = ":8080"
 	}
 	mux := http.NewServeMux()
+	mux.HandleFunc("/ping", pingHandler)
 	server := &http.Server{
 		Addr:    port,
 		Handler: mux,

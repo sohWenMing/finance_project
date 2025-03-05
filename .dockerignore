@@ -1,0 +1,5 @@
+# to ignore files in the tests folder
+tests/
+
+#to ignore markdown files
+*.md

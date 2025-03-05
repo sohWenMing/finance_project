@@ -27,3 +27,8 @@ run-server-image-background:
 
 # Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
 # when running a container , options all have to come before the final IMAGE which should be in the repository
+
+
+.PHONY: stop-server-image
+stop-server-image:
+	@docker stop finance-server 2>/dev/null || true
