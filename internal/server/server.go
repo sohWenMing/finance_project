@@ -1,13 +1,14 @@
 package server
 
 import (
+	"database/sql"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
 )
 
-func InitServer() *http.Server {
+func InitServer(*sql.DB) *http.Server {
 	port := os.Getenv("PORT")
 	if port == "" {
 		fmt.Println("Port not defined in environment, defaulting to port :8080")
@@ -21,6 +22,7 @@ func InitServer() *http.Server {
 	}
 	fmt.Printf("server is listening on port %s\n", port)
 	go func() {
+
 		err := server.ListenAndServe()
 		if err != nil && err != http.ErrServerClosed {
 			log.Fatalf("error operating server: %v", err)
