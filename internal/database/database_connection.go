@@ -9,7 +9,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var connectionString = "postgres://postgres:nindgabeet@postgres:5432/postgres?sslmode=disable"
+var connectionString = "postgres://postgres:postgres@finance_postgres:5432/finance_db?sslmode=disable"
 
 func Connect_db() (db *sql.DB, err error) {
 	db, err = sql.Open("postgres", connectionString)
