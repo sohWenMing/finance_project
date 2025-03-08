@@ -17,7 +17,7 @@ func InitServer(*sql.DB) *http.Server {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/ping", pingHandler)
 	server := &http.Server{
-		Addr:    port,
+		Addr:    "0.0.0.0" + port,
 		Handler: mux,
 	}
 	fmt.Printf("server is listening on port %s\n", port)

@@ -15,13 +15,22 @@ import (
 var client *http.Client = httpInternal.DefaultClient
 
 func TestMain(m *testing.M) {
+	startDBCommand := executils.GenExecCommand("../..", "make", "start-postgres-image")
+	stopDBCommand := executils.GenExecCommand("../..", "make", "stop-postgres-image")
+
 	startServerCmd := executils.GenExecCommand("../..", "make", "run-server-image-background")
 	stopServerCmd := executils.GenExecCommand("../..", "make", "stop-server-image")
+	if err := startDBCommand.Run(); err != nil {
+		os.Exit(1)
+	}
 	if err := startServerCmd.Run(); err != nil {
 		os.Exit(1)
 	}
 	code := m.Run()
 	if err := stopServerCmd.Run(); err != nil {
+		os.Exit(1)
+	}
+	if err := stopDBCommand.Run(); err != nil {
 		os.Exit(1)
 	}
 	os.Exit(code)

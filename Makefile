@@ -16,14 +16,14 @@ build-server-image:
 run-server-image:
 	@docker stop finance-server 2>/dev/null || true
 	@make build-server-image
-	@docker run --network finance_server_network --name finance-server --rm  finance-server
+	@docker run --network finance_server_network -p 8080:8080 --name finance-server --rm  finance-server
 # runs image not in detached mode, so that the server can be up for manual testing
 
 .PHONY: run-server-image-background
 run-server-image-background:
 	@docker stop finance-server 2>/dev/null || true
 	@make build-server-image
-	@docker run -d -p 8080:8080 --name finance-server --rm  finance-server
+	@docker run -d --network finance_server_network -p 8080:8080 --name finance-server --rm  finance-server
 # runs server in detached mode, so that for testing purposes the container can be running and present and automated
 # tests can run against it
 
