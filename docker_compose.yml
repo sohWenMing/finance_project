@@ -1,0 +1,11 @@
+services:
+  server:
+    image: 
+
+  REPOSITORY                 TAG       IMAGE ID       CREATED        SIZE
+container_r_server         latest    9d264c400dec   2 hours ago    84MB
+docker-gs-ping             latest    f486c3551c02   47 hours ago   1.17GB
+<none>                     <none>    b7e48881893e   2 days ago     84MB
+postgres                   15.12     e45d3f5ec589   12 days ago    430MB
+nindgabeet/golang_server   0.1.0     0d1e75c96f0e   2 weeks ago    83MB
+ubuntu                     22.04     a24be041d957   6 weeks ago    77.9MB

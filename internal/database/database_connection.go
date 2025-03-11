@@ -9,10 +9,23 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var connectionString = "postgres://postgres:postgres@finance_postgres:5432/finance_db?sslmode=disable"
+const (
+	host     = "finance_postgres"
+	port     = 5432
+	user     = "postgres"
+	password = "postgres"
+	dbname   = "finance_db"
+)
 
 func Connect_db() (db *sql.DB, err error) {
-	db, err = sql.Open("postgres", connectionString)
+	dbInfo := fmt.Sprintf(
+		"host=%s "+
+			"port=%d "+
+			"user=%s "+
+			"password=%s "+
+			"dbname=%s "+
+			"sslmode=disable", host, port, user, password, dbname)
+	db, err = sql.Open("postgres", dbInfo)
 
 	if err != nil {
 		return nil, err
